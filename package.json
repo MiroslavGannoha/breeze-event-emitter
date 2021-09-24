@@ -1,7 +1,7 @@
 {
   "name": "breeze-event-emitter",
   "version": "0.0.1",
-  "description": "Event emitter simple to use as a breeze!",
+  "description": "Simple to use & type safe event emitter.",
   "main": "index.ts",
   "scripts": {
     "test": "jest"

@@ -28,3 +28,5 @@ events.on('user-add', user => {
 ```
 
 ## API
+
+https://github.com/sindresorhus/emittery/edit/main/readme.md
