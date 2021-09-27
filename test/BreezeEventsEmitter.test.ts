@@ -1,4 +1,4 @@
-import { BreezeEventsEmitter as BreezeEventEmitter } from '../src';
+import { BreezeEventEmitter } from '../src';
 
 interface TestClientEventModule {
   id: string;
