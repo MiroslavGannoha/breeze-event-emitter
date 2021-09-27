@@ -1,6 +1,6 @@
 {
   "name": "breeze-event-emitter",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "Simple to use & type safe event emitter.",
   "repository": "MiroslavGannoha/breeze-event-emitter",
   "main": "src/index.ts",
@@ -8,8 +8,8 @@
     "test": "jest"
   },
   "engines": {
-    "node": ">=12"
-  },
+		"node": ">=12"
+	},
   "keywords": [
     "event",
     "events",
