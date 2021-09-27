@@ -35,7 +35,11 @@ export class BreezeEventEmitter<Events extends Record<string, unknown[]>> {
     }
   }
 
-  // Invoke each of the event handlers for a given event id with specified data.
+  /**
+   * Invoke each of the event listeners for a given event id with the specified data.
+   * @param eventType - event identifier
+   * @param data - all arguments to send with this event (can be multiple)
+   */
   public emit<T extends keyof Events>(eventType: T, ...args: Events[T]): void {
     const eventCallbacks = this.getEventCallbacks(eventType);
     for (const eventCallback of eventCallbacks) {
@@ -47,7 +51,12 @@ export class BreezeEventEmitter<Events extends Record<string, unknown[]>> {
     }
   }
 
-  // Callback registration
+  /**
+   * Adds event listener for the event
+   * @param eventType - event identifier
+   * @param callback - function to be called when an event emitted
+   * @returns disposer function to cancel the subscription
+   */
   public on<T extends keyof Events>(
     eventType: T,
     cb: (...args: Events[T]) => void
@@ -61,41 +70,30 @@ export class BreezeEventEmitter<Events extends Record<string, unknown[]>> {
     };
   }
 
-  // Callback clean up
+  /**
+   * Removes all event listeners for the event
+   * @param eventType - event identifier
+   */
   public off(eventType: keyof Events): void {
     this.eventsCallbacks.set(eventType, []);
   }
 
-  // Callback registration for any event
+  /**
+   * Adds event listener for any event
+   * @param callback - function to be called when any event emitted
+   */
   public onAny(
     cb: <T extends keyof Events>(eventType: T, ...args: Events[T]) => void
   ): void {
     this.anyEventCallbacks.push(cb);
   }
 
-  // Callback clean up for any events
+  /**
+   * Removes event listener for any event
+   * @param callback - function to be called when any event emitted
+   */
   public offAny(): void {
     this.anyEventCallbacks.length = 0;
   }
 }
 
-interface User {
-  id: string;
-  name: string;
-  isAdmin: boolean;
-}
-
-// Declare your events
-type UserEvents = {
-  "user-added": [User];
-};
-
-// Create an instance and pass events typings
-const events = new BreezeEventEmitter<UserEvents>();
-
-events.on("user-added", (user) => {
-  console.log("New user: ", JSON.stringify(user));
-});
-
-events.emit("user-added", { id: "id-1", name: "John Doe", isAdmin: false });
-// New user: '{"id":"id-1","name":"John Doe","isAdmin":false}'
