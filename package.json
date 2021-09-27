@@ -1,7 +1,7 @@
 {
   "name": "breeze-event-emitter",
   "version": "1.0.1",
-  "description": "Simple to use & type safe event emitter.",
+  "description": "Simple in use & type safe event emitter.",
   "repository": "MiroslavGannoha/breeze-event-emitter",
   "main": "src/index.ts",
   "scripts": {
