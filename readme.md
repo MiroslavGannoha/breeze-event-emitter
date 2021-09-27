@@ -1,6 +1,9 @@
 # 💨 Breeze Event Emitter 💨
+[![NPM version](https://badge.fury.io/js/breeze-event-emitter.svg)](http://badge.fury.io/js/breeze-event-emitter)
+[![npm](https://img.shields.io/npm/dm/breeze-event-emitter.svg?maxAge=2592000)]()
 
-Simple & type safe event emitter.
+> Simple in use & type safe event emitter.
+
 
 ## Install
 
