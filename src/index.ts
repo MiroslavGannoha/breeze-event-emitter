@@ -1,4 +1,4 @@
-export class BreezeEventsEmitter<Events extends Record<string, unknown[]>> {
+export class BreezeEventEmitter<Events extends Record<string, unknown[]>> {
   // A mapping of event IDs to an array of callbacks.
   private eventsCallbacks: Map<
     keyof Events,
@@ -12,7 +12,7 @@ export class BreezeEventsEmitter<Events extends Record<string, unknown[]>> {
 
   // Retrieve the list of event handlers for a given event id.
   private getEventCallbacks<T extends keyof Events>(
-    eventType: T,
+    eventType: T
   ): Array<(...args: Events[T]) => void> {
     const eventCallbacks = this.eventsCallbacks.get(eventType);
     if (eventCallbacks) {
@@ -24,7 +24,7 @@ export class BreezeEventsEmitter<Events extends Record<string, unknown[]>> {
   // Append the new callback to our list of event handlers.
   private addEventCallback<T extends keyof Events>(
     eventType: T,
-    callback: (...args: Events[T]) => void,
+    callback: (...args: Events[T]) => void
   ) {
     if (!this.eventsCallbacks.has(eventType)) {
       this.eventsCallbacks.set(eventType, []);
@@ -48,12 +48,15 @@ export class BreezeEventsEmitter<Events extends Record<string, unknown[]>> {
   }
 
   // Callback registration
-  public on<T extends keyof Events>(eventType: T, cb: (...args: Events[T]) => void): () => void {
+  public on<T extends keyof Events>(
+    eventType: T,
+    cb: (...args: Events[T]) => void
+  ): () => void {
     this.addEventCallback<T>(eventType, cb);
     return () => {
       const callbacks = this.eventsCallbacks.get(eventType);
       if (!callbacks) return;
-      const cbIndex = callbacks.findIndex(callback => callback === cb);
+      const cbIndex = callbacks.findIndex((callback) => callback === cb);
       callbacks.splice(cbIndex, 1);
     };
   }
@@ -64,7 +67,9 @@ export class BreezeEventsEmitter<Events extends Record<string, unknown[]>> {
   }
 
   // Callback registration for any event
-  public onAny(cb: <T extends keyof Events>(eventType: T, ...args: Events[T]) => void): void {
+  public onAny(
+    cb: <T extends keyof Events>(eventType: T, ...args: Events[T]) => void
+  ): void {
     this.anyEventCallbacks.push(cb);
   }
 
@@ -73,3 +78,24 @@ export class BreezeEventsEmitter<Events extends Record<string, unknown[]>> {
     this.anyEventCallbacks.length = 0;
   }
 }
+
+interface User {
+  id: string;
+  name: string;
+  isAdmin: boolean;
+}
+
+// Declare your events
+type UserEvents = {
+  "user-added": [User];
+};
+
+// Create an instance and pass events typings
+const events = new BreezeEventEmitter<UserEvents>();
+
+events.on("user-added", (user) => {
+  console.log("New user: ", JSON.stringify(user));
+});
+
+events.emit("user-added", { id: "id-1", name: "John Doe", isAdmin: false });
+// New user: '{"id":"id-1","name":"John Doe","isAdmin":false}'
