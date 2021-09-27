@@ -43,13 +43,13 @@ events.off("user-added"); // all listeners
 ```tsx
 ...
 React.useEffect(() => {
-	const userAddedOff = events.on("user-added", (user) => {
-		console.log("New user: ", JSON.stringify(user));
-	});
+  const userAddedOff = events.on("user-added", (user) => {
+    console.log("New user: ", JSON.stringify(user));
+  });
 
-	return () => {
-		userAddedOff();
-	}
+  return () => {
+    userAddedOff();
+  }
 }, [])
 ```
 
