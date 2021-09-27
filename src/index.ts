@@ -36,7 +36,7 @@ export class BreezeEventEmitter<Events extends Record<string, unknown[]>> {
   }
 
   /**
-   * Invoke each of the event listeners for a given event id with the specified data.
+   * Invokes each of the event listeners for a given event id with the specified data.
    * @param eventType - event identifier
    * @param data - all arguments to send with this event (can be multiple)
    */
