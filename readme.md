@@ -43,13 +43,13 @@ events.off("user-added"); // all listeners
 ```tsx
 ...
 React.useEffect(() => {
-	const userAddedOff = events.on("user-added", (user) => {
-		console.log("New user: ", JSON.stringify(user));
-	});
+  const userAddedOff = events.on("user-added", (user) => {
+    console.log("New user: ", JSON.stringify(user));
+  });
 
-	return () => {
-		userAddedOff();
-	}
+  return () => {
+    userAddedOff();
+  }
 }, [])
 ```
 
@@ -57,12 +57,12 @@ React.useEffect(() => {
 ```tsx
 ...
 this.events.onAny((event, ...args) => {
-	info(
-		'Fired an event: ' + `%c${event}`,
-		'background: #222; color: #fff; font-size: 11px; padding: 2px; margin: 2px; font-style: italic;',
-		'with args: ',
-		args,
-	);
+  info(
+    'Fired an event: ' + `%c${event}`,
+    'background: #222; color: #fff; font-size: 11px; padding: 2px; margin: 2px; font-style: italic;',
+    'with args: ',
+    args,
+  );
 });
 ```
 
