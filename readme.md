@@ -57,12 +57,12 @@ React.useEffect(() => {
 ```tsx
 ...
 this.events.onAny((event, ...args) => {
-	info(
-		'Fired an event: ' + `%c${event}`,
-		'background: #222; color: #fff; font-size: 11px; padding: 2px; margin: 2px; font-style: italic;',
-		'with args: ',
-		args,
-	);
+  info(
+    'Fired an event: ' + `%c${event}`,
+    'background: #222; color: #fff; font-size: 11px; padding: 2px; margin: 2px; font-style: italic;',
+    'with args: ',
+    args,
+  );
 });
 ```
 
