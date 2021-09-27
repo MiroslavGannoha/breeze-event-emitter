@@ -2,7 +2,7 @@
   "name": "breeze-event-emitter",
   "version": "0.0.1",
   "description": "Simple to use & type safe event emitter.",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
     "test": "jest"
   },
