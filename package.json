@@ -2,7 +2,10 @@
   "name": "breeze-event-emitter",
   "version": "1.0.1",
   "description": "Simple in use & type safe event emitter.",
-  "repository": "MiroslavGannoha/breeze-event-emitter",
+  "repository": "git://github.com/MiroslavGannoha/breeze-event-emitter",
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com"
+  },
   "main": "src/index.ts",
   "scripts": {
     "test": "jest"
